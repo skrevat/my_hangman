@@ -1,0 +1,30 @@
+!!! 5
+%html
+  %head
+    %title Hangman
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+    %div{:id => "headerLinks"}
+      = link_to 'Home', root_path
+      |
+      - if user_signed_in?
+        = "Logged in as #{current_user.email}"
+        |
+        = link_to " Edit Profile", edit_user_registration_path
+        |
+        = link_to " Logout", destroy_user_session_path, :method => :delete
+      - else
+        = link_to "Signup", new_user_registration_path
+        |
+        = link_to " Login", new_user_session_path
+
+  %body
+    #main
+      - if flash[:notice]
+        #notice.message= flash[:notice]
+      - elsif flash[:warning]
+        #warning.message= flash[:warning]
+      - elsif flash[:alert]
+        #alert.message= flash[:alert]
+
+      = yield

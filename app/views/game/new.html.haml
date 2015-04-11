@@ -1,0 +1,10 @@
+-#  This file is app/views/game/new.html.haml
+
+%h1 Make a New Game
+
+= form_tag game_index_path do
+
+  = label :game, :word, 'Answer:'
+  = text_field :game, :word
+
+  = submit_tag 'Start'

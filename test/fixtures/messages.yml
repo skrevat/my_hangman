@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  type: 
+  text: MyString
+  game: 
+  user: 
+
+two:
+  type: 
+  text: MyString
+  game: 
+  user: 

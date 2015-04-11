@@ -1,0 +1,12 @@
+-#  This file is app/views/game/show.html.haml
+
+%h1 Play the Game
+
+%p= @word
+
+%p= "Incorrect Guesses: #{@wrong_guesses}"
+%p= "#{@remaining} left"
+
+= form_tag game_path(@id), :method => :put do
+  = text_field_tag "guess", ""
+  = submit_tag "Submit"
