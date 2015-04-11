@@ -1,0 +1,12 @@
+# Be sure to restart your server when you modify this file.
+
+<<<<<<< HEAD
+MyHangman::Application.config.session_store :cookie_store, key: '_my-hangman_session'
+=======
+MyHangman::Application.config.session_store :cookie_store, key: '_my_hangman_session'
+>>>>>>> 4e0807a38068aa28b5a73e7d301f10ae204af0be
+
+# Use the database for sessions instead of the cookie-based default,
+# which shouldn't be used to store highly confidential information
+# (create the session table with "rails generate session_migration")
+# MyHangman::Application.config.session_store :active_record_store
