@@ -66,6 +66,7 @@ h1 h2 p {
   padding: 5px;
   padding-top: 0px;
   margin: 5px;
+  display: inline-block;
 }
 
 .text {
