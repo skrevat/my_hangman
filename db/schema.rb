@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150411215620) do
+ActiveRecord::Schema.define(:version => 20150411231853) do
 
   create_table "games", :force => true do |t|
     t.string   "word"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20150411215620) do
     t.integer  "creator_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.boolean  "gameover"
   end
 
   add_index "games", ["creator_id"], :name => "index_games_on_creator_id"

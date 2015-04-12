@@ -19,7 +19,6 @@ html, body {
   color: Black;
   font-family: "Times New Roman", Times, serif;
   font-size: 12pt;
-  color: white;
 }
 
 #container {

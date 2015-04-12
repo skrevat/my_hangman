@@ -59,5 +59,6 @@ MyHangman::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
   resources :message
   resources :game
+  match '/:id/giveup' => 'game#give_up', :as => :give_up
   root to: "application#index"
 end

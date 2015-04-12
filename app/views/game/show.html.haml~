@@ -2,11 +2,18 @@
 
 %h1 Play the Game
 
-%p= @word
+%div{:id => "board"}
+  %p{:id => "word"}= simple_format(@word)
 
-%p= "Incorrect Guesses: #{@wrong_guesses}"
-%p= "#{@remaining_guesses} left"
+  -if !@gameover
+    %p{:id => "guesses"}= "Incorrect Guesses: #{@wrong_guesses}"
+    %p{:id => "remaining"}= "#{@remaining} left"
 
-= form_tag game_path(@id), :method => :put do
-  = text_field_tag "guess", ""
-  = submit_tag "Submit"
+    = form_tag game_path(@id), :method => :put do
+      = text_field_tag "guess", ""
+      = submit_tag "Submit", :class => "btn"
+    %br
+    = button_to 'Surrender', give_up_path, :class => 'btn', :method => :get
+
+  -else
+    = button_to 'New Game', new_game_path, :class => 'btn', :method => :get
