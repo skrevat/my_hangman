@@ -15,12 +15,4 @@ class User < ActiveRecord::Base
   def my_challenges
     Game.where(:user_id => self.id, :gameover => false)
   end
-
-  def my_completed_games
-    Game.where(:player_id => self.id, :gameover => true)
-  end
-
-  def my_completed_challenges
-    Game.where(:user_id => self.id, :gameover => true)
-  end
 end

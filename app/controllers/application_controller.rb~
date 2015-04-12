@@ -1,5 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  def home
+  def index
+  end
+
+  def my_games
+    @games = current_user.my_games
+    @challenges = current_user.my_challenges
+    @completed_games = current_user.my_completed_games
+    @completed_challenges = current_user.my_completed_challenges
   end
 end

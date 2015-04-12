@@ -60,5 +60,7 @@ MyHangman::Application.routes.draw do
   resources :message
   resources :game
   match '/:id/giveup' => 'game#give_up', :as => :give_up
+  match '/games' => 'game#my_games', :as => :my_games
+  match '/challenge' => 'game#challenge', :as => :challenge
   root to: "application#index"
 end

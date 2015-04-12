@@ -1,0 +1,14 @@
+-#  This file is app/views/application/challenge.html.haml
+
+%h1 Challenge Another Player
+
+%div{:id => "board"}
+  = form_tag game_index_path do
+    = label :user, :email, 'User:', :class => "text"
+    = text_field_tag "user", ""
+    %br
+    = label :game, :word, 'Answer:', :class => "text"
+    %br
+    = text_area :game, :word, :rows => 5
+    %br
+    = submit_tag 'Challenge', :class => "btn"

@@ -3,13 +3,30 @@ class GameController < ApplicationController
   def new
   end
 
+  def challenge
+  end
+
   def create
+    if params[:user]
+      user = User.find_by_email(params[:user])
+      if !user
+        flash[:warning] = "Please enter an existing user."
+        return redirect_to challenge_path
+      end
+    end
     game = Game.create(params[:game])
     game.user_id = current_user.id
     game.guesses = ""
     game.wrong_guesses = ""
+    game.gameover = false
+    ### Will change to challenged player if player exists
+    game.player_id = if user then user.id else current_user.id end
     game.save
-    redirect_to game_path(game.id)
+    if user
+      return redirect_to my_games_path
+    else
+      return redirect_to game_path(game.id)
+    end
   end
 
   def show
@@ -44,5 +61,12 @@ class GameController < ApplicationController
     game.save
     flash[:warning] = "You gave up."
     redirect_to game_path(params[:id])
+  end
+
+  def my_games
+    @games = current_user.my_games
+    @challenges = current_user.my_challenges
+    @completed_games = current_user.my_completed_games
+    @completed_challenges = current_user.my_completed_challenges
   end
 end

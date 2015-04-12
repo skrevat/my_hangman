@@ -1,0 +1,57 @@
+-#  This file is app/views/application/my_games.html.haml
+
+%div{:class => "card"}
+  %h3 Games
+  %table{:id => "list", width: "100%"}
+    %thead
+      %tr
+        %th Game
+        %th Challenged By
+      %tbody
+      - @games.each do |game|
+      - challenger = User.find(game.user_id)
+        %tr
+          %td= link_to "#{game.word_with_guesses}", game_path(game.id)
+          %td= if challenger then "#{challenger.email}" else "None" end
+
+%div{:class => "card"}
+  %h3 Challenges
+  %table{:id => "list", width: "100%"}
+    %thead
+      %tr
+        %th Game
+        %th Player
+      %tbody
+      - @challenges.each do |game|
+      - player = User.find(game.player_id)
+        %tr
+          %td= game.word
+          %td= if player then "#{player.email}" else "None" end
+
+%div{:class => "card"}
+  %h3 Completed Games
+  %table{:id => "list", width: "100%"}
+    %thead
+      %tr
+        %th Game
+        %th Challenged By
+      %tbody
+      - @games.each do |game|
+      - challenger = User.find(game.user_id)
+        %tr
+          %td= link_to "#{game.word_with_guesses}", game_path(game.id)
+          %td= if challenger then "#{challenger.email}" else "None" end
+
+%div{:class => "card"}
+  %h3 Completed Challenges
+  %table{:id => "list", width: "100%"}
+    %thead
+      %tr
+        %th Game
+        %th Player
+      %tbody
+      - @completed_challenges.each do |game|
+      - player = User.find(game.player_id)
+        %tr
+          %td= game.word
+          %td= if player then "#{player.email}" else "None" end

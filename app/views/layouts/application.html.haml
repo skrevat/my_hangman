@@ -14,7 +14,10 @@
           - if user_signed_in?
             = link_to "#{current_user.email}", edit_user_registration_path
             %br
-            = link_to " Logout", destroy_user_session_path, :method => :delete
+            = link_to "Games", my_games_path
+            %br
+            %br
+            = link_to "Logout", destroy_user_session_path, :method => :delete
           - else
             = link_to "Signup", new_user_registration_path
             %br

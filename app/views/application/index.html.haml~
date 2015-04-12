@@ -2,4 +2,6 @@
 
 %h1 Welcome!
 
-= button_to 'New Game', new_game_path, :class => 'btn', :method => :get
+%div{:id => "board"}
+  = button_to 'New Game', new_game_path, :class => 'btn', :method => :get
+  = button_to 'New Challenge', challenge_path, :class => 'btn', :method => :get

@@ -1,14 +1,14 @@
 class Game < ActiveRecord::Base
   belongs_to :user
   belongs_to :creator
-  attr_accessible :guesses, :word, :wrong_guesses, :user_id, :gameover
+  attr_accessible :guesses, :word, :wrong_guesses, :user_id, :gameover, :player_id
 
   def guess(letter)
     error_check(letter)
     if false_guess(letter)
       raise ArgumentError
     end
-    if word.include? letter
+    if word.include? letter.downcase || word.inclue? letter.upcase
       self.guesses+=letter.downcase
     else
       self.wrong_guesses+=letter.downcase
@@ -23,7 +23,7 @@ class Game < ActiveRecord::Base
       return w
     end
     w.split("").each do |letter|
-      if !(guesses.include? letter) && !(guesses.upcase.include? letter) && !(" \n\"\.\,\'\-\?".include? letter)
+      if !(guesses.include? letter) && !(guesses.upcase.include? letter) && !(" \n\"\.\,\'\-\?\!".include? letter)
         w = w.gsub(letter, "-")
       end
     end
