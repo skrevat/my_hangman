@@ -8,7 +8,7 @@ class Game < ActiveRecord::Base
     if false_guess(letter)
       raise ArgumentError
     end
-    if (word.include? letter.downcase) || (word.inclue? letter.upcase)
+    if (word.include? letter.downcase) || (word.include? letter.upcase)
       self.guesses+=letter.downcase
     else
       self.wrong_guesses+=letter.downcase
