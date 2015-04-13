@@ -63,4 +63,8 @@ MyHangman::Application.routes.draw do
   match '/games' => 'game#my_games', :as => :my_games
   match '/challenge' => 'game#challenge', :as => :challenge
   root to: "application#index"
+
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
 end
